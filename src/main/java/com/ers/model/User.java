@@ -3,6 +3,7 @@ package com.ers.model;
 import java.time.LocalDateTime;
 
 public class User {
+
     private int userId;
     private String userName;
     private String password;
@@ -10,7 +11,13 @@ public class User {
     private boolean isActive;
     private LocalDateTime createdAt;
 
-    public User(String userName, String password, String role, boolean isActive, LocalDateTime createdAt) {
+    // Default constructor
+    public User() {
+    }
+
+    // Constructor
+    public User(String userName, String password, String role,
+                boolean isActive, LocalDateTime createdAt) {
         this.userName = userName;
         this.password = password;
         this.role = role;
@@ -68,10 +75,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", isActive=" + isActive +
                 ", createdAt=" + createdAt +
