@@ -1,9 +1,13 @@
 package com.ers.model;
 
 public class Department {
+
     private int departmentId;
     private String departmentName;
     private int managerId;
+
+    public Department() {
+    }
 
     public Department(String departmentName, int managerId) {
         this.departmentName = departmentName;
@@ -36,7 +40,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Departments{" +
+        return "Department{" +
                 "departmentId=" + departmentId +
                 ", departmentName='" + departmentName + '\'' +
                 ", managerId=" + managerId +

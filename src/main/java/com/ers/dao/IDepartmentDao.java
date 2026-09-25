@@ -1,16 +1,19 @@
 package com.ers.dao;
 
 import com.ers.model.Department;
-import com.ers.model.Employee;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IDepartmentDao {
-    Department addDepartment(Department department);
-    boolean updateDepartment(Department department);
-    Department getDepartmentById(int departmentId);
-    List<Department> getAllDepartments();
-    boolean deleteDepartmentById(int departmentId);
-    List<Employee> getEmployeesByDepartmentId(int departmentId);
-    Department getDepartmentByManagerId(int managerId);
+
+    Department addDepartment(Department department) throws SQLException;
+
+    List<Department> getAllDepartments() throws SQLException;
+
+    Department getDepartmentById(int departmentId) throws SQLException;
+
+    List<Department> searchDepartments(String keyword) throws SQLException;
+
+    boolean updateDepartment(Department department) throws SQLException;
 }

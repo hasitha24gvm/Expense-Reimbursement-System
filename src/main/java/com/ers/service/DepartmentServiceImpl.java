@@ -1,43 +1,91 @@
 package com.ers.service;
 
+import com.ers.dao.IDepartmentDao;
 import com.ers.model.Department;
-import com.ers.model.Employee;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class DepartmentServiceImpl implements IDepartmentService{
+public class DepartmentServiceImpl implements IDepartmentService {
+
+    private static final Logger LOGGER =
+            Logger.getLogger(DepartmentServiceImpl.class.getName());
+
+    private final IDepartmentDao departmentDao;
+
+    public DepartmentServiceImpl(IDepartmentDao departmentDao) {
+        this.departmentDao = departmentDao;
+    }
+
     @Override
     public Department addDepartment(Department department) {
-        return null;
-    }
-
-    @Override
-    public boolean updateDepartment(Department department) {
-        return false;
-    }
-
-    @Override
-    public Department getDepartmentById(int departmentId) {
-        return null;
+        try {
+            return departmentDao.addDepartment(department);
+        } catch (SQLException e) {
+            LOGGER.log(
+                    Level.SEVERE,
+                    "Error while adding department",
+                    e
+            );
+            return null;
+        }
     }
 
     @Override
     public List<Department> getAllDepartments() {
-        return List.of();
+        try {
+            return departmentDao.getAllDepartments();
+        } catch (SQLException e) {
+            LOGGER.log(
+                    Level.SEVERE,
+                    "Error while fetching departments",
+                    e
+            );
+            return List.of();
+        }
     }
 
     @Override
-    public boolean deleteDepartmentById(int departmentId) {
-        return false;
+    public Department getDepartmentById(int departmentId) {
+        try {
+            return departmentDao.getDepartmentById(departmentId);
+        } catch (SQLException e) {
+            LOGGER.log(
+                    Level.SEVERE,
+                    "Error while fetching department",
+                    e
+            );
+            return null;
+        }
     }
 
     @Override
-    public List<Employee> getEmployeesByDepartmentId(int departmentId) {
-        return List.of();
+    public List<Department> searchDepartments(String keyword) {
+        try {
+            return departmentDao.searchDepartments(keyword);
+        } catch (SQLException e) {
+            LOGGER.log(
+                    Level.SEVERE,
+                    "Error while searching departments",
+                    e
+            );
+            return List.of();
+        }
     }
 
     @Override
-    public Department getDepartmentByManagerId(int managerId) {
-        return null;
+    public boolean updateDepartment(Department department) {
+        try {
+            return departmentDao.updateDepartment(department);
+        } catch (SQLException e) {
+            LOGGER.log(
+                    Level.SEVERE,
+                    "Error while updating department",
+                    e
+            );
+            return false;
+        }
     }
 }
