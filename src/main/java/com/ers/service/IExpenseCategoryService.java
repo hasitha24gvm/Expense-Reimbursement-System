@@ -5,9 +5,21 @@ import com.ers.model.ExpenseCategory;
 import java.util.List;
 
 public interface IExpenseCategoryService {
-    ExpenseCategory addExpenseCategory(ExpenseCategory expenseCategory);
-    boolean updateExpenseCategory(ExpenseCategory expenseCategory);
-    ExpenseCategory getExpenseCategoryById(int categoryId);
-    List<ExpenseCategory> getAllExpenseCategories();
-    boolean deleteExpenseCategoryById(int categoryId);
+
+    ExpenseCategory addCategory(
+            ExpenseCategory category);
+
+    List<ExpenseCategory> getAllCategories();
+
+    ExpenseCategory getCategoryById(int categoryId);
+
+    List<ExpenseCategory> searchCategories(
+            String keyword);
+
+    boolean updateCategory(
+            ExpenseCategory category);
+
+    boolean updateCategoryStatus(
+            int categoryId,
+            boolean active);
 }

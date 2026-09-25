@@ -18,6 +18,12 @@ import com.ers.service.EmployeeServiceImpl;
 import com.ers.service.IDepartmentService;
 import com.ers.service.DepartmentServiceImpl;
 
+import com.ers.dao.IExpenseCategoryDao;
+import com.ers.dao.ExpenseCategoryDaoImpl;
+
+import com.ers.service.IExpenseCategoryService;
+import com.ers.service.ExpenseCategoryServiceImpl;
+
 public class AppController {
 
     public static void main(String[] args) {
@@ -54,7 +60,20 @@ public class AppController {
                 new DepartmentController(departmentService);
 
 
-        // TEST DEPARTMENT MODULE
-        departmentController.showMenu();
+        // EXPENSE CATEGORY MODULE
+
+
+        IExpenseCategoryDao categoryDao =
+                new ExpenseCategoryDaoImpl();
+
+        IExpenseCategoryService categoryService =
+                new ExpenseCategoryServiceImpl(categoryDao);
+
+        ExpenseCategoryController categoryController =
+                new ExpenseCategoryController(categoryService);
+
+
+// TEST EXPENSE CATEGORY MODULE
+        categoryController.showMenu();
     }
 }
