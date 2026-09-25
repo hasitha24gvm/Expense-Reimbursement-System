@@ -1,14 +1,23 @@
 package com.ers.service;
 
-
 import com.ers.model.Employee;
 
 import java.util.List;
 
 public interface IEmployeeService {
+
     Employee addEmployee(Employee employee);
-    boolean updateEmployee(Employee employee);
-    Employee getEmployeeById(int employeeId);
+
     List<Employee> getAllEmployees();
-    boolean deleteEmployeeById(int employeeId);
+
+    Employee getEmployeeById(int employeeId);
+
+    List<Employee> searchEmployees(String keyword);
+
+    boolean updateEmployee(Employee employee);
+
+    boolean changePassword(
+            int userId,
+            String newPassword
+    );
 }

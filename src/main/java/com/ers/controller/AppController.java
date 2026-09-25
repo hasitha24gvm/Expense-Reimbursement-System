@@ -1,25 +1,58 @@
 package com.ers.controller;
 
+import com.ers.dao.IEmployeeDao;
 import com.ers.dao.IUserDao;
+import com.ers.dao.EmployeeDaoImpl;
 import com.ers.dao.UserDaoImpl;
+
+import com.ers.service.IEmployeeService;
 import com.ers.service.IUserService;
+import com.ers.service.EmployeeServiceImpl;
 import com.ers.service.UserServiceImpl;
 
 public class AppController {
 
     public static void main(String[] args) {
 
-        // DAO
-        IUserDao userDao = new UserDaoImpl();
+        // =========================
+        // USER MODULE
+        // =========================
 
-        // Service
-        IUserService userService = new UserServiceImpl(userDao);
+        IUserDao userDao =
+                new UserDaoImpl();
 
-        // Controller
+        IUserService userService =
+                new UserServiceImpl(userDao);
+
         UserController userController =
                 new UserController(userService);
 
-        // Start application
-        userController.showMenu();
+
+        // =========================
+        // EMPLOYEE MODULE
+        // =========================
+f
+        IEmployeeDao employeeDao =
+                new EmployeeDaoImpl();
+
+        IEmployeeService employeeService =
+                new EmployeeServiceImpl(
+                        employeeDao
+                );
+
+        EmployeeController employeeController =
+                new EmployeeController(
+                        employeeService
+                );
+
+
+        // =========================
+        // APPLICATION MENU
+        // =========================
+
+        employeeController.showMenu();
+
+        // Employee module can be tested separately
+        // after completing User module testing.
     }
 }

@@ -3,13 +3,17 @@ package com.ers.model;
 public class Employee {
 
     private int employeeId;
-    private int userId;
+    private User user;
     private String fullName;
     private String email;
     private int departmentId;
 
-    public Employee(int userId, String fullName, String email, int departmentId) {
-        this.userId = userId;
+    public Employee(int userId, String fullName,
+                    String email, int departmentId) {
+
+        user = new User();
+        user.setUserId(userId);
+
         this.fullName = fullName;
         this.email = email;
         this.departmentId = departmentId;
@@ -24,11 +28,11 @@ public class Employee {
     }
 
     public int getUserId() {
-        return userId;
+        return user.getUserId();
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        user.setUserId(userId);
     }
 
     public String getFullName() {
@@ -57,9 +61,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employees{" +
+        return "Employee{" +
                 "employeeId=" + employeeId +
-                ", userId=" + userId +
+                ", userId=" + user.getUserId() +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", departmentId=" + departmentId +
